@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block head %}
+<title>Success</title>
+
+{% endblock %}
+
+{% block body %}
+<div>
+  <!-- Logout -->
+  <form action="/logout" method="POST">
+    <button class="logoutSignInButton">LOGOUT</button>
+  </form>
+
+  <h1>Success</h1>
+
+  {% if success %}
+    <p class="success" style="color:rgb(226, 223, 223);">{{ success | safe }}</p>
+  {% endif %}
+
+  <!-- Return to Search -->
+  <form action="/returnToSearch" method="POST">
+    <button class="button">Return to Search</button>
+  </form>
+</div>
+
+{% endblock %}

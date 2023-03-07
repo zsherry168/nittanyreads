@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+{% block head %}
+<title>Search</title>
+
+{% endblock %}
+
+{% block body %}
+<div>
+  <!-- Logout -->
+  <form action="/logout" method="POST">
+    <button class="logoutSignInButton">LOGOUT</button>
+  </form>
+
+  <div>
+    <h1>Search</h1>
+    <p>To search for a book, please enter the book's ISBN number, title, or author.</p>
+
+    <!-- Error message indicating failure in search -->
+    {% if message %}
+      <p class="message" style="color:rgb(215, 14, 14)">{{ message | safe }}</p>
+    {% endif %}
+
+    <!-- Book search -->
+    <form action="/search", method="POST">
+      <!-- ISBN input -->
+      <label for="isbn" style="font-weight: bold;">ISBN:</label>
+      <input type="text" id="isbn" name="isbn" class="isbn"><br><br>
+
+      <!-- Title input -->
+      <label for="title" style="font-weight: bold;">Title:</label>
+      <input type="text" id="title" name="title" class="title"><br><br>
+
+      <!-- Author input -->
+      <label for="author" style="font-weight: bold;">Author:</label>
+      <input type="text" id="author" name="author" class="author"><br><br>
+
+      <!-- Search button -->
+      <input type="submit" id="search" class="button" value="Search">
+    </form>
+  </div>
+  <div>
+      <h2 style="margin-top: 30px;">Results: </h2>
+      
+      <!-- Select book from following results -->
+      <form action="/view" method="POST">
+        <div class="form-group">
+          <!-- Drop-down list of book results -->
+          <select class="form-control" name="book">
+              {% for books in books %}
+                <option value ="{{ books.isbn }}">{{ books.title}} ({{ books.year }}) by {{ books.author}}</option><br></br>
+              {% endfor %}
+           </select>
+        </div>
+        <button class="button">View Book</button>
+      </form>
+  </div>
+</div>
+
+{% endblock %}

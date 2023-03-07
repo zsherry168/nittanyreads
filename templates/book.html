@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+
+{% block title %}
+<title>Book Details</title>
+
+{% endblock %}
+
+{% block body %}
+<div>
+  <!-- Logout -->
+  <form action="/logout" method="POST">
+    <button class="logoutSignInButton">LOGOUT</button>
+  </form>
+
+  <div>
+    <!-- Provides user with book information -->
+    <h1>Book Details</h1>
+    <p style="font-weight: bold; text-decoration: underline;">Here is what we found: </p>
+
+    <!-- ISBN -->
+    {% if isbn %}
+      <p style="color:rgb(226, 223, 223);">ISBN: {{ isbn | safe }}</p>
+    {% endif %}
+
+    <!-- Book title -->
+    {% if title %}
+      <p style="color:rgb(226, 223, 223);">{{ title | safe }}</p>
+    {% endif %}
+    
+    <!-- Book author -->
+    {% if author %}
+        <p style="color:rgb(226, 223, 223);">{{ author | safe }}</p>
+    {% endif %}
+
+    <!-- Publication year-->
+    {% if year %}
+        <p style="color:rgb(226, 223, 223);">{{ year | safe }}</p>
+    {% endif %}
+
+    <!-- Book's average rating -->
+    {% if averageRating %}
+        <p style="color:rgb(226, 223, 223);">{{ averageRating | safe }}</p>
+    {% endif %}
+
+    <!-- Number of ratings -->
+    {% if numberOfRating %}
+        <p style="color:rgb(226, 223, 223);">{{ numberOfRating | safe }}</p>
+    {% endif %}
+
+    <!-- Return to Search -->
+    <form action="/returnToSearch" method="POST">
+      <button class="button" style="margin-top: 5px; margin-bottom: 20px">Return to Search</button>
+    </form>
+  </div>
+  <div>
+    <p style="font-weight: bold; text-decoration: underline; margin-top: 10px;">
+      Read this book? Leave a review below!
+    </p>
+    <!-- User review submission -->
+    <form action="/review", method="POST">
+      <!-- User's rating of book -->
+      <label for="rating">Rating:</label>
+      <select id="rating" name="rating">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+      </select><br></br>
+
+      <label for="review">Review: </label><br></br>
+
+      <!-- Review input -->
+      <textarea id="review" name="review" rows="10" cols="75" style="margin-top: -20px"></textarea><br></br>
+
+      <!-- Submit button-->
+      <button class="button">Submit Review</button>
+
+      <!-- Hidden ISBN variable used for 'reviews' table -->
+      <input type="text" id = "isbn" name="isbn" value ="{{ isbn | safe }}" hidden="True">
+    </form>
+  </div>
+  <div>
+    <p style="font-weight: bold; text-decoration: underline; margin-top: 15px;">Reviews from others: </p>
+
+    <!-- Displays existing reviews of the book from database table 'reviews'-->
+    {% if reviews %}
+        {% for review in reviews %}
+            <p>{{ review.review }}</p>
+        {% endfor %}
+    {% endif %}
+  </div>
+</div>
+
+{% endblock %}

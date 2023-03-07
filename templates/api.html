@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block head %}
+<title>Google Books API Search</title>
+
+{% endblock %}
+
+{% block body %}
+<div>
+  <h1>Google Books API Search</h1>
+  <h3>Result:</h3>
+
+  <!-- Successful API search -->
+  {% if success %}
+    <p style="color:rgb(226, 223, 223);">{{ success | safe }}</p>
+  {% endif %}
+
+  <!-- Error with user given ISBN -->
+  {% if error %}
+    <p style="color:rgb(226, 223, 223);">{{ error | safe }}</p>
+  {% endif %}
+
+  <!-- Return to Search -->
+  <form action="/returnToSearch" method="POST">
+    <button class="button">Return to Search</button>
+  </form>
+</div>
+
+{% endblock %}

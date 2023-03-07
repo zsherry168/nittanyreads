@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block head %}
+<title>Login</title>
+
+{% endblock %}
+
+{% block body %}
+<div>
+  <!-- Return to home page -->
+  <form action="/logout" method="POST">
+    <button class="logoutSignInButton">HOME</button>
+  </form>
+  <div>
+    <h1 style="margin-bottom: 10px;">Login</h1>
+    <p>Log in now to access an exclusive world full of books!</p>
+
+    <!-- Error message indicating failure in login -->
+    {% if message %}
+      <p class="message" style="color:rgb(215, 14, 14)">{{ message | safe }}</p>
+    {% endif %}
+
+    <!-- Login -->
+    <form action="/signin" method="POST">
+      <!-- Username -->
+      <label for="username">Username:</label>
+      <input type="text" id="username" name="username"><br><br>
+
+      <!-- Password -->
+      <label for="password">Password:</label>
+      <input type="text" id="password" name="password"><br><br>
+
+      <!-- Login button -->
+      <button class="button">Login</button>
+    </form>
+  </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,79 @@
+body {
+  background-color: rgb(108, 144, 170);
+  color: rgb(226, 223, 223);
+  margin: 75px;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+h1 {
+  font-size: 50px;
+  margin-bottom: 10px;
+}
+
+h2 {
+  font-size: 35px;
+}
+
+h3 {
+  font-size: 25px;
+}
+
+.button {
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  border: none;
+  border-radius: 8px;
+  padding-left: 13px;
+  padding-right: 13px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.logoutSignInButton {
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-weight: bold;
+  text-decoration: underline;
+  color: rgb(226, 223, 223);
+  background: none;
+  border: none;
+  border-radius: 10px;
+  padding-left: 0px;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+.welcomeText {
+  margin-bottom: 30px;
+}
+
+.isbn, .title, .author {
+  width: 400px;
+  padding-top: 7px;
+  padding-bottom: 7px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.isbn {
+  margin-left: 30px;
+}
+
+.title {
+  margin-left: 39px;
+}
+
+.author {
+  margin-left: 21px;
+}
+
+.form-control {
+  width: 480px;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  padding-left: 10px;
+}
+
+.review {
+  width: 200px;
+}
